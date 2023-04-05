@@ -127,7 +127,7 @@ async function run() {
     });
     // alternate between emojis and words
     function randomBody() {
-      const randomNum = Math.abs(Math.floor(Math.random() * 2));
+      const randomNum = Math.abs(Math.floor(Math.random() * 3));
 
       if (randomNum > 1) return faker.internet.emoji();
       return faker.lorem.words(3);

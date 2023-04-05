@@ -30,7 +30,7 @@ export default defineConfig({
     trace: "on-first-retry",
 
     /* Run browser in headless mode */
-    headless: process.env.CI ? true : false,
+    headless: true,
   },
 
   /* Configure projects for major browsers */

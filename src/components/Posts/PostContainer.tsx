@@ -5,7 +5,7 @@ import {
   HandThumbUpIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import type { PostContainerProps } from "~/utils/customTypes";
+import type { PostContainerProps, PostImage } from "~/utils/customTypes";
 import Avatar from "~/components/Avatar";
 import getTimeAgo from "../Fn/getTimeAgo";
 import Popover from "../Popover";
@@ -34,6 +34,35 @@ export function PostInteractButton({
       {icon}
       <span className="hidden xs:inline-block">{label}</span>
     </button>
+  );
+}
+
+function ImageSection({
+  images,
+  isModalActive,
+}: {
+  images: Array<PostImage> | null;
+  isModalActive: boolean;
+}) {
+  if (!images) return null;
+
+  if (isModalActive) {
+    return (
+      <div className="mb-3">
+        <Carousel
+          slides={images}
+          options={{}}
+          isNavigationVisible={isModalActive}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="mb-3 overflow-clip rounded-lg">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="w-full" src={images[0]?.url} alt="" />
+    </div>
   );
 }
 
@@ -104,17 +133,7 @@ export default function PostContainer({
         >
           {body}
         </p>
-        {images
-          ? images.length > 0 && (
-              <div className="mb-3">
-                <Carousel
-                  slides={images}
-                  options={{}}
-                  isNavigationVisible={isModalActive}
-                />
-              </div>
-            )
-          : ""}
+        <ImageSection images={images} isModalActive={isModalActive} />
       </div>
       <div className="flex justify-between">
         <span

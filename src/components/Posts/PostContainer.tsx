@@ -41,11 +41,9 @@ function ImageSection({
   images,
   isModalActive,
 }: {
-  images: Array<PostImage> | null;
+  images: Array<PostImage>;
   isModalActive: boolean;
 }) {
-  if (!images) return null;
-
   if (isModalActive) {
     return (
       <div className="mb-3">
@@ -59,7 +57,7 @@ function ImageSection({
   }
 
   return (
-    <div className="mb-3 overflow-clip rounded-lg">
+    <div className="overflow-clip rounded-lg">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className="w-full" src={images[0]?.url} alt="" />
     </div>
@@ -116,7 +114,7 @@ export default function PostContainer({
               <span className="text-sm font-medium line-clamp-1">
                 {user.name}
               </span>
-              <div className="mt-0.5 mr-2 text-xs text-gray-500 opacity-60 dark:text-gray-100">
+              <div className="mr-2 mt-0.5 text-xs text-gray-500 opacity-60 dark:text-gray-100">
                 · {getTimeAgo(String(createdAt))}
               </div>
             </div>
@@ -124,16 +122,15 @@ export default function PostContainer({
         </Link>
       </div>
       <div
-        className="mt-1 flex flex-col"
+        className="mb-3 mt-1 flex flex-col gap-2"
         onClick={() => setIsModalActive(true)}
       >
-        <p
-          className="ml-1 mb-2.5 leading-tight line-clamp-6"
-          data-testid="post body"
-        >
+        <p className="leading-tight line-clamp-6" data-testid="post body">
           {body}
         </p>
-        <ImageSection images={images} isModalActive={isModalActive} />
+        {images && images.length > 0 && (
+          <ImageSection images={images} isModalActive={isModalActive} />
+        )}
       </div>
       <div className="flex justify-between">
         <span
@@ -181,7 +178,7 @@ export default function PostContainer({
             <button
               type="button"
               onClick={() => void copyToClipboard()}
-              className="inline-flex items-center justify-between gap-4 rounded-md py-3 px-6 shadow-sm shadow-black transition-colors hover:bg-web-white hover:dark:bg-web-gray-light"
+              className="inline-flex items-center justify-between gap-4 rounded-md px-6 py-3 shadow-sm shadow-black transition-colors hover:bg-web-white hover:dark:bg-web-gray-light"
             >
               <ClipboardIcon className="w-6" />
               Copy link to post
@@ -189,7 +186,7 @@ export default function PostContainer({
           </div>
         </Popover>
         {isCopyConfirmVisible && (
-          <div className="fixed left-1/2 bottom-4 z-50 -translate-x-1/2 rounded-md bg-logo-blue px-4 py-2 font-medium text-white shadow-md shadow-gray-600">
+          <div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-md bg-logo-blue px-4 py-2 font-medium text-white shadow-md shadow-gray-600">
             Copied to clipboard
           </div>
         )}

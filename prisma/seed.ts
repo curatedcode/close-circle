@@ -100,7 +100,7 @@ async function run() {
   const commentsArr: Comment[] = [];
   const postImagesArr: PostImage[] = [];
 
-  posts.forEach((post) => {
+  posts.forEach((post, index) => {
     const likeAmount = faker.datatype.number({
       min: POST_LIKE_MIN,
       max: POST_LIKE_MAX,
@@ -185,21 +185,24 @@ async function run() {
       min: POST_IMAGE_MIN,
       max: POST_IMAGE_MAX,
     });
-    for (let b = 0; b < postImageAmount; b++) {
-      postImagesArr.push({
-        url: faker.image.imageUrl(
-          undefined,
-          undefined,
-          getRandomPhotoCategory(),
-          true
-        ),
-        post: {
-          connect: {
-            // assign images randomly
-            id: getRandomPostId(200) ?? "",
+    // helps stop every post having an image
+    if (index % 2 === 0) {
+      for (let b = 0; b < postImageAmount; b++) {
+        postImagesArr.push({
+          url: faker.image.imageUrl(
+            undefined,
+            undefined,
+            getRandomPhotoCategory(),
+            true
+          ),
+          post: {
+            connect: {
+              // assign images randomly
+              id: getRandomPostId(200) ?? "",
+            },
           },
-        },
-      });
+        });
+      }
     }
   });
 

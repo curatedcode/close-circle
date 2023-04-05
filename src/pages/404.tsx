@@ -21,7 +21,7 @@ const Custom404: NextPage = () => {
         <meta name="description" content="404 page not found" />
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <div className="flex h-screen items-center justify-center bg-web-gray text-lg text-web-white sm:text-xl">
+      <div className="flex h-screen items-center justify-center bg-web-white text-lg text-web-gray dark:bg-web-gray dark:text-web-white sm:text-xl">
         <div className="-mt-32 grid h-fit place-content-center place-items-center [&>p]:text-center">
           <Logo width={100} height={100} />
           <p className="mt-8 text-xl sm:text-2xl">

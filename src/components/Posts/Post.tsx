@@ -4,9 +4,14 @@ import type { PostProps } from "~/utils/customTypes";
 import updatePostCache from "../Fn/updatePostCache";
 import PostContainer from "./PostContainer";
 import PostModal from "./PostModal";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Post({ client, input, postRouter }: PostProps) {
   const [isModalActive, setIsModalActive] = useState(false);
+
+  const router = useRouter();
+  const { status } = useSession();
 
   const likeMutation = api.post.like.useMutation({
     onSuccess: (data, variables) => {
@@ -29,6 +34,7 @@ export default function Post({ client, input, postRouter }: PostProps) {
   // the only like in this array is from the current signed in user
   const hasLiked = postRouter.likes.length > 0;
   function handleLike() {
+    if (status !== "authenticated") return void router.replace("/auth/sign-in");
     if (hasLiked) {
       return void unlikeMutation({ postId: postRouter.id });
     }

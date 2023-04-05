@@ -26,11 +26,11 @@ export default function PostComment({
             src={user.image ?? "profile-placeholder.jpg"}
             name={user.name}
           />
-          <div className="mt-1 flex h-fit flex-col items-center xs:flex-row xs:gap-2">
+          <div className="mt-1 flex h-fit flex-row items-center gap-2">
             <span className="text-sm font-medium line-clamp-1">
               {user.name}
             </span>
-            <span className="mt-0.5 mr-2 whitespace-nowrap text-xs text-gray-500 opacity-60 dark:text-gray-100">
+            <span className="mr-2 mt-0.5 whitespace-nowrap text-xs text-gray-500 opacity-60 dark:text-gray-100">
               · {getTimeAgo(String(createdAt))}
             </span>
           </div>

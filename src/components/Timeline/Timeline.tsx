@@ -11,7 +11,7 @@ export default function Timeline({
 }: {
   where: RouterInputs["post"]["infinite"]["where"];
 }) {
-  const LIMIT = 4;
+  const LIMIT = 6;
 
   const scrollPosition = useScrollPosition();
   const prevScrollPosition = useRef(0);
@@ -42,7 +42,7 @@ export default function Timeline({
   const posts = data?.pages.flatMap((page) => page.posts) ?? [];
 
   return (
-    <div className="flex w-full flex-col items-center gap-6 place-self-center p-4 pt-6">
+    <div className="flex min-h-screen w-full flex-col items-center gap-6 place-self-center p-4 pt-6">
       {isLoading && posts.length < 1 && <Loading />}
       {posts.length > 0 &&
         posts.map((post) => (

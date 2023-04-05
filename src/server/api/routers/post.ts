@@ -66,7 +66,7 @@ export const post = createTRPCRouter({
           .optional()
           .optional(),
         cursor: z.string().nullish(),
-        limit: z.number().min(1).max(5).default(3),
+        limit: z.number().min(1).max(6).default(3),
       })
     )
     .query(async ({ ctx, input }) => {

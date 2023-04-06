@@ -16,8 +16,9 @@ function UserMenu() {
   const { theme, setTheme } = useTheme();
 
   const { data: session, status } = useSession();
+
   const { data } = api.profile.getProfileId.useQuery({
-    where: { id: session?.user.id ?? "." },
+    where: { id: session?.user.id ?? "" },
   });
   const profileId = data?.profileId || "";
 

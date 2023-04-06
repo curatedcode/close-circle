@@ -90,7 +90,7 @@ model Post {
   comments   Comment[]
   images     PostImage[]
   createdAt  DateTime     @default(now())
-  updateAt   DateTime     @updatedAt
+  updatedAt   DateTime     @updatedAt
 
   @@index([userId])
 }
@@ -102,7 +102,7 @@ model PostLike {
   user       User      @relation(fields: [userId], references: [id])
   userId     String
   createdAt  DateTime  @default(now())
-  updateAt   DateTime  @updatedAt
+  updatedAt   DateTime  @updatedAt
 
   @@unique([postId, userId])
   @@index([userId])
@@ -116,7 +116,7 @@ model Comment {
   user       User      @relation(fields: [userId], references: [id])
   userId     String
   createdAt  DateTime  @default(now())
-  updateAt   DateTime  @updatedAt
+  updatedAt   DateTime  @updatedAt
 
   @@index([userId])
   @@index([postId])

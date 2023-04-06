@@ -1,6 +1,5 @@
 import { type Placement } from "@floating-ui/react";
 import { type QueryClient } from "@tanstack/react-query";
-import { type EmblaOptionsType } from "embla-carousel-react";
 import { type Dispatch, type SetStateAction } from "react";
 import { type RouterOutputs, type RouterInputs } from "./api";
 
@@ -151,15 +150,4 @@ export declare type AvatarProps = {
   src: string | null;
   name: string;
   size?: Sizes;
-};
-
-export declare type CarouselProps = {
-  slides: PostImage[];
-  options: EmblaOptionsType;
-  isNavigationVisible?: boolean;
-};
-
-export declare type CarouselButtonProps = {
-  isActive: boolean;
-  onClick: () => void;
 };

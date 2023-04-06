@@ -62,7 +62,7 @@ const SignInPage = ({
               Or continue with
             </p>
           </div>
-          <div className="flex w-40 flex-row justify-center gap-3">
+          <div className="flex w-40 justify-center gap-6">
             {providers &&
               Object.values(providers).map((provider) => (
                 <Tooltip

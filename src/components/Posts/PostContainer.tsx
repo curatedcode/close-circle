@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import {
   ArrowUpTrayIcon,
   ChatBubbleOvalLeftEllipsisIcon,
@@ -44,22 +45,34 @@ function ImageSection({
   images: Array<PostImage>;
   isModalActive: boolean;
 }) {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
   if (isModalActive) {
     return (
       <div className="mb-3">
-        <Carousel
-          slides={images}
-          options={{}}
-          isNavigationVisible={isModalActive}
-        />
+        <Carousel images={images} />
       </div>
     );
   }
 
+  if (!images[0]) return <></>;
+
   return (
-    <div className="overflow-clip rounded-lg">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="w-full" src={images[0]?.url} alt="" />
+    <div className="rounded-lg">
+      <img
+        className="w-full rounded-lg"
+        src={images[0].url}
+        alt=""
+        onLoad={() => setIsImageLoaded(true)}
+        hidden={!isImageLoaded}
+      />
+      <div hidden={isImageLoaded}>
+        <img
+          className="w-full"
+          src="/blur-placeholder.png"
+          alt="placeholder image"
+        />
+      </div>
     </div>
   );
 }

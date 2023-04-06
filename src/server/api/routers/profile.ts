@@ -3,7 +3,7 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { z } from "zod";
 
 export const profile = createTRPCRouter({
-  getProfileId: protectedProcedure
+  getProfileId: publicProcedure
     .input(
       z.object({
         where: z.object({
@@ -12,8 +12,10 @@ export const profile = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      const { prisma } = ctx;
+      const { prisma, session } = ctx;
       const { where } = input;
+
+      if (!session) return null;
 
       const profileId = await prisma.user.findUnique({
         where,

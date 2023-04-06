@@ -18,6 +18,8 @@ export default function Carousel({
 
   const [currentVisibleSlide, setCurrentVisibleSlide] = useState(0);
 
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
   const scrollPrev = useCallback(() => {
     setCurrentVisibleSlide((slide) => slide - 1);
     return emblaApi && emblaApi.scrollPrev();
@@ -74,7 +76,26 @@ export default function Carousel({
                 data-testid={`slide ${index + 1}`}
                 data-inviewport={currentVisibleSlide === index ? true : false}
               >
-                <img className="w-full" src={img.url} alt="" />
+                {/* only use loading placeholder on first slide */}
+                {index === 0 ? (
+                  <>
+                    <img
+                      className="w-full rounded-lg"
+                      src={img.url}
+                      alt=""
+                      onLoad={() => setIsImageLoaded(true)}
+                      hidden={!isImageLoaded}
+                    />
+                    <img
+                      hidden={isImageLoaded}
+                      className="w-full"
+                      src="/blur-placeholder.png"
+                      alt="placeholder image"
+                    />
+                  </>
+                ) : (
+                  <img className="w-full" src={img.url} alt="" />
+                )}
               </div>
             ))}
           </div>

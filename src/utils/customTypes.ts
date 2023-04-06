@@ -152,14 +152,3 @@ export declare type AvatarProps = {
   name: string;
   size?: Sizes;
 };
-
-export declare type CarouselProps = {
-  slides: PostImage[];
-  options: EmblaOptionsType;
-  isNavigationVisible?: boolean;
-};
-
-export declare type CarouselButtonProps = {
-  isActive: boolean;
-  onClick: () => void;
-};

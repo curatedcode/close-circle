@@ -50,11 +50,7 @@ function ImageSection({
   if (isModalActive) {
     return (
       <div className="mb-3">
-        <Carousel
-          slides={images}
-          options={{}}
-          isNavigationVisible={isModalActive}
-        />
+        <Carousel images={images} />
       </div>
     );
   }

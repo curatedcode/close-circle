@@ -74,18 +74,25 @@ async function run() {
       max: USER_POSTS_MAX,
     });
 
+    function getPostBody(body: string): string {
+      // posts can't be longer than 280 characters
+      if (body.length > 280) return getPostBody(faker.lorem.paragraph(1));
+      return body;
+    }
+
     for (let b = 0; b < postAmount; b++) {
       const date = faker.date.between(
         "2023-01-01T00:00:00.000Z",
         "2023-03-023T00:00:00.000Z"
       );
+
       postsArr.push({
         user: {
           connect: {
             id: user.id,
           },
         },
-        body: faker.lorem.paragraph(1),
+        body: getPostBody(faker.lorem.paragraph(1)),
         createdAt: date,
       });
     }

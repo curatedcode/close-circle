@@ -1,6 +1,6 @@
-# Close Circle (Facebook Clone)
+# Close Circle - Social Media Site
 
-This is my take on a social networking site. Influenced heavily by Facebook.
+This is my take on a social networking site.
 
 You can follow other users, publish posts, like and comment on other users' posts, share the post with a link, and scroll for hours on an infinite timeline. Additionally, no site would be complete without it, dark mode.
 

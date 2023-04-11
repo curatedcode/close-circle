@@ -6,6 +6,7 @@ import Avatar from "~/components/Avatar";
 import Link from "next/link";
 import { env } from "~/env.mjs";
 import { EyeSlashIcon } from "@heroicons/react/24/outline";
+import Loading from "~/components/Loading";
 
 const SearchPage: NextPage = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const SearchPage: NextPage = () => {
         title={`Search ${searchText} | Close Circle`}
         description={`Search results for ${searchText}`}
       >
-        <span>Loading...</span>
+        <Loading />
       </Layout>
     );
   }

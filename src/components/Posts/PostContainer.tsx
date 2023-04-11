@@ -135,7 +135,9 @@ export default function PostContainer({
         </Link>
       </div>
       <div
-        className="mb-3 mt-1 flex flex-col gap-2"
+        className={`mb-3 mt-1 flex flex-col gap-2 ${
+          isModalActive ? "" : "cursor-pointer"
+        }`}
         onClick={() => setIsModalActive(true)}
       >
         <p className="leading-tight line-clamp-6" data-testid="post body">

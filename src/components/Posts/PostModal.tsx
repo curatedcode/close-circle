@@ -91,7 +91,7 @@ export default function PostModal({
     <div className="fixed top-0 left-0 z-20 h-screen w-screen overflow-hidden bg-black bg-opacity-80 py-6">
       <FloatingFocusManager context={context}>
         <div
-          className="absolute left-1/2 z-30 flex h-[95%] w-full max-w-[42rem] -translate-x-1/2 flex-col items-end overflow-y-auto rounded-md bg-web-white dark:bg-web-gray"
+          className="absolute left-1/2 top-1/2 z-30 flex h-[95%] w-full max-w-[42rem] -translate-x-1/2 -translate-y-1/2 flex-col items-end overflow-y-auto rounded-md bg-web-white dark:bg-web-gray"
           ref={refs.setFloating}
           style={{
             ...styles,

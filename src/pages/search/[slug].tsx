@@ -55,7 +55,7 @@ const SearchPage: NextPage = () => {
     <Link
       href={`${env.NEXT_PUBLIC_BASE_URL}/profiles/${user.profileId}`}
       key={user.name}
-      className="inline-flex w-full items-center gap-2 rounded-md bg-white px-4 py-2 dark:bg-web-gray"
+      className="inline-flex w-full items-center gap-4 rounded-md bg-white px-4 py-2 dark:bg-web-gray-light"
     >
       <Avatar name={user.name} size="lg" src={user.image} />
       <span className="line-clamp-1">{user.name}</span>

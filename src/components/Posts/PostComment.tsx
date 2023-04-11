@@ -26,7 +26,7 @@ export default function PostComment({
             src={user.image ?? "profile-placeholder.jpg"}
             name={user.name}
           />
-          <div className="mt-1 flex h-fit flex-row items-center gap-2">
+          <div className="mt-2 flex h-fit flex-row items-center gap-2">
             <span className="text-sm font-medium line-clamp-1">
               {user.name}
             </span>

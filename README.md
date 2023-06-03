@@ -18,13 +18,13 @@ You can follow other users, publish posts, like and comment on other users' post
 
 ```
 # If you have SSH set up with Git:
-git clone git@github.com:curatedcode/battleship.git
+git clone git@github.com:curatedcode/close-circle.git
 
 # For HTTPS:
-git clone https://github.com/curatedcode/battleship.git
+git clone https://github.com/curatedcode/close-circle.git
 
 # Finally, GitHub CLI:
-gh repo clone curatedcode/battleship
+gh repo clone curatedcode/close-circle
 ```
 
 3. `cd` into the directory of your local clone.

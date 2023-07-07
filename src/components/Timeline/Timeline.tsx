@@ -55,7 +55,7 @@ export default function Timeline({
         ))}
       {!isLoading && posts.length < 0 && (
         <span className="mt-8 text-center text-lg text-gray-400">
-          This is the end...
+          No more posts to show...
         </span>
       )}
     </div>
